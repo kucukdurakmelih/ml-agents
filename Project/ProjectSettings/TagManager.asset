@@ -30,6 +30,11 @@ TagManager:
   - purpleAgent
   - purpleGoal
   - tile
+  - Ball
+  - BlueGoal
+  - RedGoal
+  - Bound
+  - Coin
   layers:
   - Default
   - TransparentFX

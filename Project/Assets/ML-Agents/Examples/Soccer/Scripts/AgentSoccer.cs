@@ -6,7 +6,8 @@ using Unity.MLAgents.Policies;
 public enum Team
 {
     Blue = 0,
-    Purple = 1
+    Purple = 1,
+    Red = 2,
 }
 
 public class AgentSoccer : Agent
