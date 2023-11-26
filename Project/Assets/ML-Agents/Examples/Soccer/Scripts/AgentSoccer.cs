@@ -143,6 +143,8 @@ public class AgentSoccer : Agent
             ForceMode.VelocityChange);
     }
 
+
+
     public override void OnActionReceived(ActionBuffers actionBuffers)
 
     {
@@ -157,11 +159,15 @@ public class AgentSoccer : Agent
             // Existential penalty for Strikers
             AddReward(-m_Existential);
         }
-        MoveAgent(actionBuffers.DiscreteActions);
+        //MoveAgent(actionBuffers.DiscreteActions);
+        var continuousActions = actionBuffers.ContinuousActions;
+        var dir = new Vector3( continuousActions[0], 0, continuousActions[1]);
+        agentRb.velocity = dir * m_SoccerSettings.agentRunSpeed;
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)
     {
+        /*
         var discreteActionsOut = actionsOut.DiscreteActions;
         //forward
         if (Input.GetKey(KeyCode.W))
@@ -190,6 +196,11 @@ public class AgentSoccer : Agent
         {
             discreteActionsOut[1] = 2;
         }
+        */
+
+        var continuousActionsOut = actionsOut.ContinuousActions;
+        continuousActionsOut[0] = Input.GetAxis("Horizontal");
+        continuousActionsOut[1] = Input.GetAxis("Vertical");
     }
     /// <summary>
     /// Used to provide a "kick" to the ball.
