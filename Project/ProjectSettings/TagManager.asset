@@ -35,6 +35,7 @@ TagManager:
   - RedGoal
   - Bound
   - Coin
+  - PurpleGoal
   layers:
   - Default
   - TransparentFX
