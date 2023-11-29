@@ -52,12 +52,12 @@ public class PongBall : MonoBehaviour
 
         if (other.gameObject.CompareTag("BlueGoal"))
         {
-            _goalTouched?.Invoke(Team.Blue);
+            _goalTouched?.Invoke(Team.Purple);
         }
 
         if (other.gameObject.CompareTag("PurpleGoal"))
         {
-            _goalTouched?.Invoke(Team.Purple);
+            _goalTouched?.Invoke(Team.Blue);
         }
     }
 }

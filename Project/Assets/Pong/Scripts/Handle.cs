@@ -6,23 +6,23 @@ using Unity.MLAgents.Actuators;
 using UnityEngine;
 
 public class Handle : Agent
-{
-    [field: SerializeField] private float Speed { get; set; } = 5f;
-    [field: SerializeField] private Vector3 _startPos;
-    private Rigidbody _rb;
-    public Team team;
-
-
-
-    public override void OnActionReceived(ActionBuffers actions)
     {
-       ActionSegment<float> continuousActions = actions.ContinuousActions;
-       MoveHandle(continuousActions);
-    }
+        [field: SerializeField] private float Speed { get; set; } = 5f;
+        [field: SerializeField] private Vector3 _startPos;
+        private Rigidbody _rb;
+        public Team team;
 
-    private void MoveHandle(ActionSegment<float>  direction)
-    {
-        _rb.velocity = new Vector3(0, 0, direction[0]) * Speed;
+
+
+        public override void OnActionReceived(ActionBuffers actions)
+        {
+           ActionSegment<float> continuousActions = actions.ContinuousActions;
+           MoveHandle(continuousActions);
+        }
+
+        private void MoveHandle(ActionSegment<float>  direction)
+        {
+            _rb.velocity = new Vector3(0, 0, direction[0]) * Speed;
     }
 
     public void Reset()
