@@ -13,31 +13,16 @@ public class Handle : Agent
     public Team team;
 
 
-    public override void Heuristic(in ActionBuffers actionsOut)
-    {
-        var discreteActions = actionsOut.DiscreteActions;
-        discreteActions[0] = 0;
-        discreteActions[1] = 0;
-        if (Input.GetKey(KeyCode.W))
-        {
-            discreteActions[0] = 1;
-        }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            discreteActions[1] = 1;
-        }
-
-    }
 
     public override void OnActionReceived(ActionBuffers actions)
     {
-       ActionSegment<int> discreteActions = actions.DiscreteActions;
-       MoveHandle(discreteActions);
+       ActionSegment<float> continuousActions = actions.ContinuousActions;
+       MoveHandle(continuousActions);
     }
 
-    private void MoveHandle(ActionSegment<int>  direction)
+    private void MoveHandle(ActionSegment<float>  direction)
     {
-        _rb.velocity = new Vector3(0, 0, direction[0] == 1 ? 1 : direction[1] == 1 ? -1 : 0) * Speed;
+        _rb.velocity = new Vector3(0, 0, direction[0]) * Speed;
     }
 
     public void Reset()
